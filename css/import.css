@@ -1,0 +1,242 @@
+/**
+ * Import Quiz Page Styling
+ * File: /local/ai_assistant/css/import.css
+ */
+
+.ai-import-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.import-debug-box {
+    background: #f8f9fa;
+    border-left: 4px solid #6c757d;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.import-debug-box h4 {
+    margin: 0 0 10px 0;
+    color: #495057;
+    font-size: 0.95em;
+}
+
+.import-debug-box pre {
+    background: white;
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.85em;
+    margin: 0;
+    color: #495057;
+}
+
+/* SUCCESS BOX */
+.import-success-box {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.import-success-header {
+    background: #28a745;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1em;
+}
+
+.import-success-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.import-success-icon {
+    font-size: 1.8em;
+}
+
+.import-success-body {
+    padding: 20px;
+    color: #155724;
+}
+
+.import-success-body p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.import-success-body strong {
+    color: #0c5620;
+}
+
+.import-success-actions {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.import-success-actions .btn {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* ERROR BOX */
+.import-error-box {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.import-error-header {
+    background: #dc3545;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1em;
+}
+
+.import-error-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.import-error-icon {
+    font-size: 1.8em;
+}
+
+.import-error-body {
+    padding: 20px;
+    color: #721c24;
+}
+
+.import-error-body p {
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.import-error-actions {
+    padding: 0 20px 20px 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.import-error-actions .btn {
+    flex: 1;
+    min-width: 150px;
+}
+
+
+.import-gift-data {
+    background: white;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.import-gift-data h4 {
+    margin: 0 0 10px 0;
+    color: #495057;
+}
+
+.import-gift-data pre {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 0.85em;
+    margin: 0 0 10px 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.import-gift-data small {
+    color: #6c757d;
+    font-size: 0.85em;
+}
+
+/* BUTTON STYLES */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+}
+
+
+@media (max-width: 600px) {
+    .ai-import-container {
+        padding: 10px;
+    }
+    
+    .import-success-header,
+    .import-error-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .import-success-actions,
+    .import-error-actions {
+        flex-direction: column;
+    }
+    
+    .import-success-actions .btn,
+    .import-error-actions .btn {
+        width: 100%;
+    }
+}

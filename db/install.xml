@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLDB PATH="local/ai_assistant/db" VERSION="2025110817" COMMENT="AI Assistant plugin tables"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+
+    <TABLES>
+
+        <TABLE NAME="ai_rag_content" COMMENT="AI RAG content table">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="module_id" TYPE="int" LENGTH="10" NOTNULL="false"/>
+                <FIELD NAME="scope" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="topic"/>
+                <FIELD NAME="content" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="createdtime" TYPE="int" LENGTH="10" NOTNULL="true"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="module_id_idx" UNIQUE="false" FIELDS="module_id"/>
+                <INDEX NAME="course_section_idx" UNIQUE="false" FIELDS="course_id,section_id"/>
+            </INDEXES>
+        </TABLE>
+
+        <TABLE NAME="ai_rag_embeddings" COMMENT="Embeddings for RAG chunks">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="rag_content_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="chunk_index" TYPE="int" LENGTH="11" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="chunk_text" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="embedding_hash" TYPE="char" LENGTH="64" NOTNULL="true"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="rag_content_fk" TYPE="foreign" FIELDS="rag_content_id" REFTABLE="ai_rag_content" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="ai_chat_history" COMMENT="Chat history per section per user">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="role" TYPE="char" LENGTH="20" NOTNULL="true"/>
+                <FIELD NAME="message" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="context_used" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="ai_generated_quiz" COMMENT="AI generated quizzes per section">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="section_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="created_by" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="quiz_data" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="question_count" TYPE="int" LENGTH="11" NOTNULL="true" DEFAULT="0"/>
+                <FIELD NAME="difficulty" TYPE="char" LENGTH="20" NOTNULL="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="ai_feedback_history" COMMENT="AI feedback history for assignments">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="assignment_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="submission_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="feedback_text" TYPE="text" NOTNULL="true"/>
+                <FIELD NAME="scores" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="suggestions" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+    </TABLES>
+</XMLDB>

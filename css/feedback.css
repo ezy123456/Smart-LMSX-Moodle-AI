@@ -1,0 +1,127 @@
+/* AI Feedback Button Styles */
+.ai-feedback-button-container {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.ai-feedback-button-container .btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ai-feedback-button-container .btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.ai-feedback-button-container .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Modal Styles */
+.ai-feedback-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.ai-feedback-content {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.ai-feedback-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ai-feedback-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ai-feedback-body {
+    padding: 20px;
+}
+
+.feedback-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-section:last-child {
+    border-bottom: none;
+}
+
+.feedback-section h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.feedback-section p {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.feedback-list {
+    margin: 0;
+    padding-left: 20px;
+    color: #666;
+}
+
+.feedback-list li {
+    margin-bottom: 8px;
+}
+
+.feedback-scores {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.feedback-scores tr {
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-scores td {
+    padding: 8px 0;
+    color: #666;
+}
+
+.feedback-scores td:first-child {
+    text-transform: capitalize;
+    font-weight: 500;
+}
